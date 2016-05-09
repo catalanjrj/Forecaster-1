@@ -261,13 +261,12 @@
 
 - (void)handleRefresh:(UIRefreshControl *)refreshControl {
     NSArray *locationObjects = [self.fetchedResultsController fetchedObjects];
-    
+    self.recievedLocationData = nil;
     for (Location *location in locationObjects) {
         [self.receivedLocationArray addObject:location];
         [self getForecastlatitude:[location.latitude floatValue] longitude:[location.longitude floatValue]];
     }
     
-//    [self.tableView reloadData];
     [refreshControl endRefreshing];
 }
 
